@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  rabbitmq:
+    image: rabbitmq:3.9.5-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - rabbitmq_net
+
+#  influxdb:
+#    image: influxdb:2.0-alpine
+#    ports:
+#      - "8086:8086"
+#    # Use the influx cli to set up an influxdb instance.
+#
+#  influxdb_cli:
+#    links:
+#      - influxdb
+#    image: influxdb:2.0-alpine
+#    environment:
+#      # Use these same configurations parameters in your telegraf configuration, mytelegraf.conf.
+#      - DOCKER_INFLUXDB_INIT_MODE=setup
+#      - DOCKER_INFLUXDB_INIT_USERNAME=myusername
+#      - DOCKER_INFLUXDB_INIT_PASSWORD=passwordpasswordpassword
+#      - DOCKER_INFLUXDB_INIT_ORG=myorg
+#      - DOCKER_INFLUXDB_INIT_BUCKET=mybucket
+#      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
+#      - INFLUXD_TLS_CERT=/etc/ssl/influxdb-selfsigned.crt
+#      - INFLUXD_TLS_KEY=/etc/ssl/influxdb-selfsigned.key
+#    entrypoint: [ "./entrypoint.sh" ]
+#    restart: on-failure:10
+#    depends_on:
+#      - influxdb
+
+volumes:
+  influxdbv2:
+
+networks:
+  rabbitmq_net:
+    driver: bridge
