@@ -4,7 +4,7 @@ import os
 from flask import Flask, render_template, request
 
 if TYPE_CHECKING:
-    from werkzeug import FileStorage
+    from werkzeug.datastructures import FileStorage
 
 
 # configure application
@@ -18,11 +18,22 @@ def index():
 
 @flask_app.route("/post_file", methods=["POST"])
 def post_file():
+    """Get a file from UI and send it to RabbitMQ."""
     if request.method == "POST":
         try:
+            # get the file from web UI
             file = request.files['input_file']  # type: FileStorage
+
+            # check the file is csv
+            if not file.filename.endswith('.csv'):
+                return render_template('fail.html')
+
+            # read the file
             lines = file.stream.readlines()
             flask_app.logger.info(lines)
+
+            # send the file to RabbitMQ
+            # TODO
 
             file.close()
             return render_template('success.html')
