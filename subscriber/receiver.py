@@ -1,5 +1,3 @@
-import time
-
 import pika
 
 QUEUE_NAME = 'log'
@@ -12,7 +10,6 @@ def listen_queue():
 
     def callback(ch, method, properties, body):
         print(" [x] Received %r" % body.decode())
-        time.sleep(body.count(b'.'))
         print(" [x] Done")
 
     channel.basic_consume(queue=QUEUE_NAME,
