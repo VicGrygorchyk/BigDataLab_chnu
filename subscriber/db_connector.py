@@ -47,7 +47,7 @@ class DBConnector:
             print(f"Table is {table}")
             for row in table.records:  # type: FluxRecord
                 print(f"\nRow is: {row.values}.")
-                print("----" * 50)
+                print("----" * 20)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         print('Closing connection to DB.')
