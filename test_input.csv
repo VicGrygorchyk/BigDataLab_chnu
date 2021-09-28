@@ -1,2 +1,6 @@
 id,userid,country,city,campaign,payment
 1,123,UA,CV,internship,0.3
+2,222,DE,BR,part work,0.6
+3,324,UK,LN,internship,0.2
+4,989,PL,WS,full work,0.8
+5,106,IT,RO,internship,0.1
