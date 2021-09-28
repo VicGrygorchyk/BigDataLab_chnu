@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 import os
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 from sender import send_msg
 
@@ -15,7 +15,7 @@ flask_app = Flask(__name__)
 
 @flask_app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", msg="")
 
 
 @flask_app.route("/post_file", methods=["POST"])
@@ -28,7 +28,7 @@ def post_file():
             try:
                 # check the file is csv
                 if not file.filename.endswith('.csv'):
-                    return render_template('fail.html')
+                    return render_template("index.html", msg="Error: a log file has no '.csv' ending.")
 
                 # read the file
                 lines = file.stream.readlines()
@@ -39,12 +39,12 @@ def post_file():
                     send_msg(bytes(line))
             finally:
                 file.close()
-            return render_template('success.html')
+            return render_template("index.html", msg="Successfully send file")
         except Exception as exc:
             flask_app.logger.error(exc)
-            return render_template('fail.html')
+            return render_template("index.html", msg="Sending msg failed")
 
-    return render_template('fail.html')
+    return render_template("index.html", msg="Sending msg failed")
 
 
 if __name__ == "__main__":
