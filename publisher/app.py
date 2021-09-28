@@ -31,11 +31,12 @@ def post_file():
                     return render_template('fail.html')
 
                 # read the file
-                lines = file.stream.read()
+                lines = file.stream.readlines()
                 flask_app.logger.info(lines)
 
                 # send the file to RabbitMQ
-                send_msg(lines)
+                for line in lines:
+                    send_msg(bytes(line))
             finally:
                 file.close()
             return render_template('success.html')
