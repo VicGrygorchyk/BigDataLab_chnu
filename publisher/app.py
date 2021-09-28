@@ -39,7 +39,7 @@ def post_file():
                     send_msg(bytes(line))
             finally:
                 file.close()
-            return render_template("index.html", msg="Successfully send file")
+            return render_template("index.html", msg="Successfully sent file")
         except Exception as exc:
             flask_app.logger.error(exc)
             return render_template("index.html", msg="Sending msg failed")
