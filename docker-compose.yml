@@ -12,7 +12,7 @@ services:
   influxdb:
     image: influxdb:2.0-alpine
     ports:
-      - "8086:8086"
+      - 8086:8086
     volumes:
       - influxdb-storage:/var/lib/influxdb
     environment:
