@@ -31,5 +31,4 @@ for row in range(ROWS):
 
 with open('test_input.csv', mode='w') as csv_file:
     csv_writer = csv.writer(csv_file, delimiter=',')
-    csv_writer.writerow(['id', 'userid', 'country', 'city', 'campaign', 'payment'])
     csv_writer.writerows(result)
