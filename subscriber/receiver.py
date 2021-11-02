@@ -22,7 +22,6 @@ def listen_queue(connector: 'DBConnector'):
             # save data to DB
             connector.write_data(received_data)
             print("Done")
-            connector.read_data()
 
         channel.basic_consume(queue=QUEUE_NAME,
                               auto_ack=True,
