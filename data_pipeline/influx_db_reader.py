@@ -5,7 +5,7 @@ from influxdb_client.client.flux_table import FluxRecord
 BUCKET_NAME = 'log_bucket'
 
 
-class DBConnector:
+class InfluxDBReader:
 
     def __init__(self):
         self.client = None
@@ -21,11 +21,12 @@ class DBConnector:
     def read_data(self):
         tables = self.query_api.query(f'from(bucket:"{BUCKET_NAME}") |> range(start: -10m)')
 
-        for table in tables:
-            print(f"Table is {table}")
-            for row in table.records:  # type: FluxRecord
-                print(f"\nRow is: {row.values}.")
-                print("----" * 20)
+        # for table in tables:
+        #     print(f"Table is {table}")
+            # for row in table.records:  # type: FluxRecord
+                # print(f"\nRow is: {row.values}.")
+                # print("----" * 20)
+        return [table.records for table in tables]
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         print('Closing connection to DB.')
