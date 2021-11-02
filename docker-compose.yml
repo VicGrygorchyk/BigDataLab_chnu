@@ -4,15 +4,15 @@ services:
     image: rabbitmq:3.9.5-management-alpine
     container_name: 'rabbitmq'
     ports:
-      - 5672:5672
-      - 15672:15672
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - rabbitmq_net
 
   influxdb:
     image: influxdb:2.0-alpine
     ports:
-      - 8086:8086
+      - "8086:8086"
     volumes:
       - influxdb-storage:/var/lib/influxdb
     environment:
@@ -23,6 +23,21 @@ services:
       - DOCKER_INFLUXDB_INIT_BUCKET=log_bucket
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=admintoken
     entrypoint: [ "./entrypoint.sh" ]
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mapreduce
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
 
 volumes:
   influxdb-storage:
