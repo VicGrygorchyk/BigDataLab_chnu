@@ -27,6 +27,7 @@ services:
   postgres:
     image: postgres
     restart: always
+    hostname: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mapreduce
@@ -38,6 +39,16 @@ services:
     restart: always
     ports:
       - "8080:8080"
+
+  spark:
+    image: myspark
+    build:
+      context: ./
+      dockerfile: Dockerfile_spark
+    ports:
+      - "4040:4040"
+    networks:
+      - rabbitmq_net
 
 volumes:
   influxdb-storage:
