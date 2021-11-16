@@ -1,26 +1,9 @@
 """Starts multiple workers"""
-import sys
-from functools import partial
-from multiprocessing import Process
-
 from influx_db_reader import InfluxDBReader
-from mapper import map_data, map_to_worker
-from reducer import reduce_data
+from spark_manager import PySparkManager
+from postgres_connector import PostgresConnector
 
 MAX_WORKERS = 5
-
-
-def start_workers():
-    workers = [
-        Process(
-            target=partial(),
-            args=()
-        ) for _ in range(MAX_WORKERS)
-    ]
-    for process in workers:
-        process.start()
-    for process in workers:
-        process.join()
 
 
 if __name__ == "__main__":
@@ -31,9 +14,10 @@ if __name__ == "__main__":
     for records in data:
         for row in records:
             values.append(row.values)
-    print(values[0])
-
-    # map data
-    mapped = map_data(values)
-    # create workers and assign a reduce task for each
-
+    PostgresConnector().create_db()
+    manager = PySparkManager()
+    spark = manager.spark
+    data_frame = manager.read_data_frames(values)
+    print('-----------------------')
+    print(data_frame)
+    manager.write_data_frames_to_db(data_frame)

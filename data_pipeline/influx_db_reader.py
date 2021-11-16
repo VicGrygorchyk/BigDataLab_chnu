@@ -13,6 +13,7 @@ class InfluxDBReader:
         self.query_api = None
 
     def __enter__(self):
+        print('Read data from influxDB')
         self.client = InfluxDBClient(url="http://localhost:8086", username="admin", password="adminpass",
                                      ssl=False, verify_ssl=False, token="admintoken", org="chnu")
         self.query_api = self.client.query_api()
