@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 import os
+import re
 
 from flask import Flask, render_template, request, redirect, url_for
 
@@ -36,6 +37,7 @@ def post_file():
 
                 # send the file to RabbitMQ
                 for line in lines:
+                    line = re.sub(rb'\r\n', b'', line)
                     send_msg(bytes(line))
             finally:
                 file.close()
