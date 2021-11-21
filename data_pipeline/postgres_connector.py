@@ -8,21 +8,27 @@ host = "localhost"
 database = "test_database"
 user = "postgres"
 password = "mapreduce"
-url = f'jdbc:postgresql://postgres:5432/{database}'
+url = f'jdbc:postgresql://localhost:5432/{database}'
 db_properties = {'username': user, 'password': password, 'url': url, 'driver': 'org.postgresql.Driver'}
 
 
 class PostgresConnector:
 
+    def __init__(self):
+        self.conn = None
+
+    def __enter__(self):
+        # connect to the PostgreSQL server
+        print('Connecting to the PostgreSQL database...')
+        self.conn = psycopg2.connect(f'user={user} password={password} host={host}')
+        self.conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+        return self
+
     def create_db(self):
         """ Connect to the PostgreSQL database server """
-        conn = None
+        conn = self.conn
         try:
-            # connect to the PostgreSQL server
-            print('Connecting to the PostgreSQL database...')
-            conn = psycopg2.connect(f'user={user} password={password} host={host}')
 
-            conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
             # create a cursor
             cur = conn.cursor()
             # create DB
@@ -35,7 +41,8 @@ class PostgresConnector:
             cur.close()
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
-        finally:
-            if conn is not None:
-                conn.close()
-                print('Database connection closed.')
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.conn is not None:
+            self.conn.close()
+            print('Database connection closed.')

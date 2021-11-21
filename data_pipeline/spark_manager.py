@@ -6,10 +6,9 @@ from postgres_connector import db_properties, url, database
 class PySparkManager:
 
     def __init__(self):
-        self.spark = SparkSession.builder\
-            .master("local[*]") \
-            .appName("Word Count") \
-            .config("spark.some.config.option", "some-value") \
+        self.spark = SparkSession.builder \
+            .appName("Python Spark Lab 2") \
+            .config("spark.jars", "/home/mudro/Documents/Hryhorchuk_BigData_Lab1/postgresql-42.3.1.jar") \
             .getOrCreate()
 
     def read_data_frames(self, values) -> DataFrame:
