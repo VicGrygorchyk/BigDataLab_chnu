@@ -10,7 +10,7 @@ class PySparkManager:
     def __init__(self):
         self.spark = SparkSession.builder \
             .appName("Python Spark Lab 2") \
-            .config("spark.jars", "/home/mudro/Documents/Hryhorchuk_BigData_Lab1/postgresql-42.3.1.jar") \
+            .config("spark.jars", "./postgresql-42.3.1.jar") \
             .getOrCreate()
 
     def read_data_frames(self, values) -> DataFrame:
