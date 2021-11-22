@@ -1,6 +1,8 @@
-from pyspark.sql import SparkSession, DataFrame
+from typing import List
 
-from postgres_connector import db_properties, url, database
+from pyspark.context import SparkContext
+from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql import functions
 
 
 class PySparkManager:
@@ -15,6 +17,13 @@ class PySparkManager:
         data_frame = self.spark.createDataFrame(values)
         return data_frame
 
-    def write_data_frames_to_db(self, data_frames: DataFrame):
-        data_frames.write.jdbc(url=url, table=f'{database}.logs', mode='overwrite', properties=db_properties)
+    def get_payment_avg(self, data: List, workers_amount) -> DataFrame:
+        df = self.get_context().parallelize(data, workers_amount).toDF()
+        result = df.filter(df['payment'].isNotNull()) \
+            .groupBy(df['country'], df['city']) \
+            .agg(functions.mean(df['payment']))
+        result.show()
+        return result
 
+    def get_context(self) -> SparkContext:
+        return self.spark.sparkContext
