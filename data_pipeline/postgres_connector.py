@@ -1,4 +1,6 @@
 """Writes data to Postgres DB"""
+import datetime
+
 import psycopg2
 from psycopg2 import sql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
@@ -21,7 +23,7 @@ class PostgresConnector:
     def __enter__(self):
         # connect to the PostgreSQL server
         print('Connecting to the PostgreSQL database...')
-        self.conn = psycopg2.connect(f'user={user} password={password} host={host}')
+        self.conn = psycopg2.connect(f'user={user} password={password} host={host} dbname={database}')
         self.conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         return self
 
@@ -41,22 +43,28 @@ class PostgresConnector:
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
 
-    def write_data(self):
+    def write_data(self, dataset):
         # create a cursor
         cur = self.conn.cursor()
         # create DB
         cur.execute(sql.SQL(
             f"CREATE TABLE IF NOT EXISTS {table_name} ("
-            "ID INT PRIMARY KEY NOT NULL,"
-            "DATE DATE NOT NULL DEFAULT CURRENT_DATE,"
-            "COUNTRY CHAR(10),"
-            "CITY CHR(10),"
-            "CLICK_COST FLOAT(10)"
+            "id SERIAL PRIMARY KEY NOT NULL,"
+            "date DATE NOT NULL DEFAULT CURRENT_DATE,"
+            "country CHAR(10),"
+            "city CHAR(10),"
+            "click_cost FLOAT(10)"
             ");"))
         self.conn.commit()
-        # TODO
+        # transform dataset to sting with tuples, e.g. "(UA, KHA, 0.5),(EU, MADm 0.3)"
+        values = []
+        date = datetime.date.today()
+        for data_row in dataset:
+            values.append(f"('{date}', '{data_row['country']}', '{data_row['city']}', {data_row['avg(payment)']})")
+        values_to_str = ','.join(values)
         cur.execute(sql.SQL(
-            f"INSERT INTO {table_name} "
+            f"INSERT INTO {table_name} (date,country,city,click_cost) "
+            f"VALUES {values_to_str};"
         ))
         self.conn.commit()
         cur.close()

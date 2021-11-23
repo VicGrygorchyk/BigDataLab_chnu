@@ -23,4 +23,6 @@ if __name__ == "__main__":
         spark = manager.spark
         print('-----------------------')
         agg_result = manager.get_payment_avg(data=values, workers_amount=MAX_WORKERS)
-        # TODO save to DB
+        result = agg_result.collect()
+        # save to DB
+        connector.write_data(result)
