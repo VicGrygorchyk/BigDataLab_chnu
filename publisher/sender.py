@@ -6,7 +6,7 @@ QUEUE_NAME = 'log'
 
 def send_msg(data):
     """Send message to Broker."""
-    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost', port=5672))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq', port=5672))
     try:
         channel = connection.channel()
         channel.queue_declare(queue=QUEUE_NAME)
