@@ -23,6 +23,8 @@ services:
       - DOCKER_INFLUXDB_INIT_BUCKET=log_bucket
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=admintoken
     entrypoint: [ "./entrypoint.sh" ]
+    networks:
+      - rabbitmq_net
 
   postgres:
     image: postgres
@@ -33,12 +35,16 @@ services:
       POSTGRES_PASSWORD: mapreduce
     ports:
       - "5432:5432"
+    networks:
+      - rabbitmq_net
 
   adminer:
     image: adminer
     restart: always
     ports:
       - "8080:8080"
+    networks:
+      - rabbitmq_net
 
   spark:
     image: myspark
@@ -47,6 +53,16 @@ services:
       dockerfile: Dockerfile_spark
     ports:
       - "4040:4040"
+    networks:
+      - rabbitmq_net
+
+  publisher:
+    image: publisher
+    build:
+      context: ./
+      dockerfile: Dockerfile_publisher
+    ports:
+      - "5000:5000"
     networks:
       - rabbitmq_net
 
