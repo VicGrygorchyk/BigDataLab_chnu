@@ -11,7 +11,7 @@ class DBConnector:
         self.write_api = None
 
     def __enter__(self):
-        self.client = InfluxDBClient(url="http://localhost:8086", username="admin", password="adminpass",
+        self.client = InfluxDBClient(url="http://influxdb:8086", username="admin", password="adminpass",
                                      ssl=False, verify_ssl=False, token="admintoken", org="chnu")
 
         self.write_api = self.client.write_api(write_options=SYNCHRONOUS)

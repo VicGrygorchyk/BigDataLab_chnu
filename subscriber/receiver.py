@@ -11,7 +11,7 @@ QUEUE_NAME = 'log'
 
 def listen_queue(connector: 'DBConnector'):
     """Listen for a new message in MQ."""
-    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
     try:
         channel = connection.channel()
         channel.queue_declare(queue=QUEUE_NAME)

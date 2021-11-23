@@ -1,100 +1,100 @@
-0,100,EU,WR,internship,0.81
-1,101,EU,MAD,internship,0.31
-2,102,EU,MAD,internship,0.01
-3,103,UA,CV,part work,0.21
-4,104,US,WA,part work,0.26
-5,105,UK,MAN,internship,0.45
-6,106,UA,CV,full work,0.31
-7,107,EU,PAR,internship,0.08
-8,108,EU,PAR,internship,0.01
-9,109,UA,LV,full work,0.53
-10,110,UK,MAN,internship,0.55
-11,111,EU,WR,internship,0.55
-12,112,EU,WR,full work,0.56
-13,113,EU,WR,part work,0.81
-14,114,EU,MAD,internship,0.98
-15,115,EU,PAR,full work,0.74
-16,116,EU,WR,part work,0.86
-17,117,US,WA,full work,0.12
-18,118,US,WA,internship,0.61
-19,119,US,NY,internship,0.15
-20,120,EU,BAR,part work,0.84
-21,121,EU,MAD,part work,0.98
-22,122,UA,KYV,internship,0.5
-23,123,UA,KYV,part work,0.72
-24,124,UA,LV,internship,0.39
-25,125,UA,CV,internship,0.43
-26,126,US,NY,internship,0.31
-27,127,UA,LV,full work,0.3
-28,128,US,WA,internship,0.08
-29,129,UA,KHA,part work,0.24
-30,130,EU,PAR,part work,0.22
-31,131,UK,MAN,internship,0.17
-32,132,UA,LV,internship,0.49
-33,133,EU,PAR,part work,0.74
-34,134,EU,MAD,internship,0.21
-35,135,UA,KHA,part work,0.87
-36,136,UK,MAN,part work,0.05
-37,137,UK,LND,part work,0.45
-38,138,US,WA,internship,0.45
-39,139,US,NY,full work,0.71
-40,140,US,NY,full work,0.19
-41,141,UA,CV,internship,0.73
-42,142,EU,WR,internship,0.16
-43,143,UK,LND,internship,0.02
-44,144,UK,MAN,internship,0.46
-45,145,UA,CV,part work,0.99
-46,146,UA,KHA,full work,0.63
-47,147,EU,MAD,internship,0.7
-48,148,EU,BAR,internship,0.18
-49,149,EU,WR,full work,0.78
-50,150,US,AU,internship,0.93
-51,151,UK,MAN,part work,0.62
-52,152,EU,WR,internship,0.98
-53,153,UK,LND,full work,0.7
-54,154,EU,MAD,internship,0.84
-55,155,EU,MAD,internship,0.03
-56,156,US,NY,part work,0.34
-57,157,UK,LND,full work,0.37
-58,158,EU,BAR,full work,0.28
-59,159,US,AU,full work,0.9
-60,160,EU,PAR,part work,0.31
-61,161,US,NY,full work,0.49
-62,162,UA,KHA,internship,0.62
-63,163,US,AU,full work,0.54
-64,164,UK,MAN,part work,0.88
-65,165,UA,KHA,internship,0.08
-66,166,UK,MAN,part work,0.41
-67,167,UA,KYV,full work,0.71
-68,168,UK,LND,part work,0.21
-69,169,UK,MAN,internship,0.67
-70,170,UK,MAN,full work,0.76
-71,171,US,WA,full work,0.55
-72,172,UA,KHA,internship,0.2
-73,173,UK,LND,internship,0.92
-74,174,US,AU,part work,0.94
-75,175,US,AU,full work,0.06
-76,176,UK,LND,part work,0.66
-77,177,UK,MAN,part work,0.58
-78,178,UA,KYV,part work,0.52
-79,179,UA,LV,internship,0.08
-80,180,UA,KYV,full work,0.41
-81,181,US,NY,full work,0.87
-82,182,EU,MAD,full work,0.46
-83,183,UK,LND,full work,0.13
-84,184,UA,KHA,full work,0.99
-85,185,UA,KHA,part work,0.89
-86,186,US,WA,part work,0.46
-87,187,UK,MAN,internship,0.16
-88,188,UA,LV,internship,0.66
-89,189,UK,LND,full work,0.75
-90,190,UK,MAN,internship,0.71
-91,191,EU,WR,full work,0.68
-92,192,EU,BAR,full work,0.7
-93,193,EU,MAD,part work,0.46
-94,194,US,AU,internship,0.66
-95,195,EU,MAD,full work,0.4
-96,196,US,NY,part work,0.05
-97,197,UK,LND,full work,0.94
-98,198,EU,BAR,part work,0.31
-99,199,UA,LV,internship,0.06
+0,100,US,AU,part work,0.18
+1,101,US,WA,part work,0.07
+2,102,EU,PAR,internship,0.86
+3,103,UA,KYV,internship,0.32
+4,104,UA,KYV,full work,0.14
+5,105,UA,CV,internship,0.89
+6,106,US,WA,internship,0.3
+7,107,UA,LV,internship,0.22
+8,108,US,AU,internship,0.21
+9,109,UA,KHA,part work,0.96
+10,110,US,NY,full work,0.82
+11,111,UK,MAN,internship,0.53
+12,112,UA,LV,part work,0.56
+13,113,EU,PAR,part work,0.96
+14,114,UA,KHA,full work,0.44
+15,115,US,AU,part work,0.14
+16,116,UK,MAN,internship,0.94
+17,117,EU,BAR,full work,0.02
+18,118,US,WA,internship,0.13
+19,119,UK,MAN,internship,0.55
+20,120,UK,LND,internship,0.66
+21,121,UA,KHA,part work,0.13
+22,122,UK,MAN,part work,0.92
+23,123,EU,BAR,part work,0.17
+24,124,UA,LV,internship,0.95
+25,125,EU,WR,internship,0.74
+26,126,UA,KYV,full work,0.82
+27,127,UA,CV,internship,0.5
+28,128,US,NY,internship,0.6
+29,129,EU,PAR,part work,0.59
+30,130,EU,MAD,internship,0.23
+31,131,UK,LND,full work,0.08
+32,132,US,AU,part work,0.16
+33,133,EU,BAR,full work,0.5
+34,134,US,AU,internship,0.25
+35,135,US,WA,full work,0.3
+36,136,US,AU,internship,0.8
+37,137,UK,MAN,full work,0.33
+38,138,EU,PAR,part work,0.23
+39,139,UK,MAN,full work,0.06
+40,140,EU,PAR,full work,0.69
+41,141,US,NY,full work,0.38
+42,142,UK,LND,full work,0.04
+43,143,UA,CV,internship,0.52
+44,144,UA,CV,internship,0.05
+45,145,US,AU,full work,0.74
+46,146,UK,MAN,internship,0.15
+47,147,UK,LND,full work,0.56
+48,148,UA,KHA,part work,0.04
+49,149,UA,KHA,internship,0.91
+50,150,US,WA,part work,0.21
+51,151,UK,LND,full work,0.91
+52,152,UK,LND,internship,0.86
+53,153,UA,KYV,internship,0.29
+54,154,EU,WR,internship,0.38
+55,155,UA,CV,full work,0.85
+56,156,US,NY,full work,0.4
+57,157,UK,MAN,full work,0.82
+58,158,US,AU,full work,0.6
+59,159,US,AU,part work,0.91
+60,160,UK,MAN,internship,0.48
+61,161,US,WA,part work,0.3
+62,162,UA,CV,part work,0.55
+63,163,US,NY,internship,0.13
+64,164,UK,LND,internship,0.91
+65,165,US,AU,internship,0.2
+66,166,US,WA,part work,0.01
+67,167,UA,CV,full work,0.3
+68,168,UK,LND,part work,0.22
+69,169,US,AU,internship,0.9
+70,170,US,WA,part work,0.88
+71,171,UK,LND,internship,0.2
+72,172,UA,LV,full work,0.78
+73,173,EU,WR,full work,0.48
+74,174,UA,KYV,part work,0.22
+75,175,UA,CV,part work,0.35
+76,176,UA,KYV,internship,0.35
+77,177,UA,LV,internship,0.01
+78,178,EU,PAR,part work,0.87
+79,179,UA,KHA,full work,0.71
+80,180,US,AU,internship,0.5
+81,181,UA,KYV,internship,0.38
+82,182,UA,LV,full work,0.87
+83,183,UK,MAN,internship,0.97
+84,184,UK,LND,full work,0.77
+85,185,UA,CV,full work,0.37
+86,186,US,AU,full work,0.65
+87,187,EU,MAD,internship,0.35
+88,188,UA,CV,full work,0.2
+89,189,UK,LND,full work,0.55
+90,190,US,NY,full work,0.05
+91,191,UA,CV,part work,0.72
+92,192,UA,LV,part work,0.14
+93,193,UK,MAN,internship,0.61
+94,194,EU,MAD,internship,0.1
+95,195,UA,CV,full work,0.96
+96,196,EU,MAD,part work,0.23
+97,197,UA,KYV,internship,0.63
+98,198,US,WA,full work,0.68
+99,199,EU,BAR,internship,0.83
