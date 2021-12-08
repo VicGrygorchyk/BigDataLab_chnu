@@ -28,7 +28,6 @@ class DatePickerFromTo(FlaskForm):
 @flask_app.route('/report', methods=['POST','GET'])
 def report():
     date_picker = DatePickerFromTo()
-    print("123")
     if date_picker.validate_on_submit():
         # here is your date slice
         start_date = date_picker.date_from.data.strftime('%Y-%m-%d')
