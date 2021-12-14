@@ -18,6 +18,7 @@ class PySparkManager:
         return data_frame
 
     def get_payment_avg(self, data: List, workers_amount) -> DataFrame:
+        # TODO: mapreduce
         df = self.get_context().parallelize(data, workers_amount).toDF()
         result = df.filter(df['payment'].isNotNull()) \
             .groupBy(df['country'], df['city']) \
