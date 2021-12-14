@@ -17,3 +17,4 @@ typing-extensions==3.10.0.2
 urllib3==1.26.7
 Werkzeug==2.0.1
 zipp==3.5.0
+Flask-WTF==1.0.0
