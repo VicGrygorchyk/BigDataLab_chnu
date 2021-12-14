@@ -27,47 +27,17 @@ class PostgresConnector:
         self.conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         return self
 
-    def create_db(self):
-        """ Connect to the PostgreSQL database server """
-        conn = self.conn
-        try:
-            # create a cursor
-            cur = conn.cursor()
-            # create DB
-            cur.execute(sql.SQL(f"CREATE DATABASE {database};"))
-            # write data
-            # commit the changes to the database
-            conn.commit()
-            # close the communication with the PostgreSQL
-            cur.close()
-        except (Exception, psycopg2.DatabaseError) as error:
-            print(error)
-
-    def write_data(self, dataset):
+    def get_data(self, date_from, date_to):
         # create a cursor
         cur = self.conn.cursor()
-        # create DB
-        cur.execute(sql.SQL(
-            f"CREATE TABLE IF NOT EXISTS {table_name} ("
-            "id SERIAL PRIMARY KEY NOT NULL,"
-            "date DATE NOT NULL DEFAULT CURRENT_DATE,"
-            "country CHAR(10),"
-            "city CHAR(10),"
-            "click_cost FLOAT(10)"
-            ");"))
-        self.conn.commit()
-        # transform dataset to sting with tuples, e.g. "(UA, KHA, 0.5),(EU, MADm 0.3)"
-        values = []
-        date = datetime.date.today()
-        for data_row in dataset:
-            values.append(f"('{date}', '{data_row['country']}', '{data_row['city']}', {data_row['avg(payment)']})")
-        values_to_str = ','.join(values)
         cur.execute(sql.SQL(
             f"SELECT (date,country,city,click_cost) FROM {table_name} "
-            f"WHERE {date} BETWEEN {date_from} AND {date_to};"
+            f"WHERE date >= '{date_from}' AND date <= '{date_to}';"
         ))
+        data = cur.fetchall()
         self.conn.commit()
         cur.close()
+        return data
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.conn is not None:
