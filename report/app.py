@@ -1,7 +1,9 @@
 import os
 import re
+import csv
+from io import StringIO
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, Response
 from flask_wtf import FlaskForm
 from wtforms.fields import DateField
 
@@ -33,7 +35,9 @@ def report():
             end_date = date_picker.date_to.data.strftime('%Y-%m-%d')
             with PostgresConnector() as conn:
                 global DATA
-                DATA = [re.sub(r'\(|\)', '', el[0]).split(",") for el in conn.get_data(start_date, end_date)]
+                global SOURCE
+                data = conn.get_data(start_date, end_date)
+                DATA = [re.sub(r'\(|\)|\s+', '', el[0]).split(",") for el in data]
             # return redirect(url_for('table', data=['test', 'test1']))
             return redirect(url_for('table'))
 
@@ -42,9 +46,34 @@ def report():
 
 @flask_app.route('/table', methods=['GET'])
 def table():
-    global DATA
     data = DATA
     return render_template('table.html', fetched_data=data)
+
+
+@flask_app.route("/get_csv")
+def get_csv():
+
+    def generate():
+        data = StringIO()
+        w = csv.writer(data)
+
+        # write header
+        w.writerow(('date', 'country', 'city', 'click_price'))
+        yield data.getvalue()
+        data.seek(0)
+        data.truncate(0)
+
+        # write each log item
+        w.writerows(DATA)
+
+        yield data.getvalue()
+
+    return Response(
+        generate(),
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename=myplot.csv"}
+    )
 
 
 if __name__ == "__main__":
