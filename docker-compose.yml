@@ -46,16 +46,6 @@ services:
     networks:
       - rabbitmq_net
 
-  spark:
-    image: myspark
-    build:
-      context: ./
-      dockerfile: Dockerfile_spark
-    ports:
-      - "4040:4040"
-    networks:
-      - rabbitmq_net
-
   publisher:
     image: publisher
     build:
