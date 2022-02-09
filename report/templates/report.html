@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function FromDateChanged(date_picker_from)
+        {
+            date_picker_to = document.getElementById("date_picker_to")
+            date_picker_to.min = date_picker_from.value
+        }
+
+        function ToDateChanged(date_picker_to)
+        {
+            date_picker_from = document.getElementById("date_picker_from")
+            date_picker_from.max = date_picker_to.value
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="date_picker_from">Select start date</label>
+            {{ date_picker.date_from(class='form-control input-normal', id='date_picker_from', onChange='FromDateChanged(this)') }}
+            <label for="date_picker_to">Select end date</label>
+            {{ date_picker.date_to(class='form-control input-normal', id='date_picker_to', onChange= 'ToDateChanged(this)') }}
+            {{ date_picker.hidden_tag() }}
+        </div>
+            <button type="submit" id="get_data" class="btn btn-primary">Get report for dates</button>
+    </form>
+</div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+</html>

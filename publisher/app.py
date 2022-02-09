@@ -2,13 +2,12 @@ from typing import TYPE_CHECKING
 import os
 import re
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 
 from sender import send_msg
 
 if TYPE_CHECKING:
     from werkzeug.datastructures import FileStorage
-
 
 # configure application
 flask_app = Flask(__name__)
@@ -51,4 +50,6 @@ def post_file():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
+    SECRET_KEY = os.urandom(32)
+    flask_app.config['SECRET_KEY'] = SECRET_KEY
     flask_app.run(debug=True, port=port)
